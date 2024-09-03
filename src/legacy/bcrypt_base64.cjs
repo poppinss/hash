@@ -1,5 +1,3 @@
-/* eslint-disable capitalized-comments,unicorn/number-literal-case,unicorn/no-abusive-eslint-disable */
-
 /**
  * Bcrypt does not use standard base64 encoding.
  * https://hackernoon.com/the-bcrypt-protocol-is-kind-of-a-mess-4aace5eb31bd
@@ -10,7 +8,6 @@
  **/
 const BASE64_CODE = './ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('')
 
-/* eslint-disable prettier/prettier */
 const BASE64_INDEX = [
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 54,
@@ -19,7 +16,6 @@ const BASE64_INDEX = [
   30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
   -1, -1, -1, -1, -1,
 ]
-/* eslint-enable prettier/prettier */
 
 /**
  * Encodes a Buffer to base64 using the bcrypt's base64 dictionary.
