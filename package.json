@@ -49,11 +49,10 @@
     "@adonisjs/eslint-config": "^2.0.0-beta.6",
     "@adonisjs/prettier-config": "^1.4.0",
     "@adonisjs/tsconfig": "^1.4.0",
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
     "@japa/assert": "^3.0.0",
     "@japa/expect-type": "^2.0.2",
     "@japa/runner": "^3.1.4",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@swc/core": "^1.7.23",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.5.2",
@@ -95,30 +94,31 @@
     "url": "https://github.com/adonisjs/hash/issues"
   },
   "homepage": "https://github.com/adonisjs/hash#readme",
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "publishConfig": {
-    "access": "public",
-    "tag": "latest"
+    "provenance": true
   },
   "release-it": {
     "git": {
+      "requireCleanWorkingDir": true,
+      "requireUpstream": true,
       "commitMessage": "chore(release): ${version}",
       "tagAnnotation": "v${version}",
+      "push": true,
       "tagName": "v${version}"
     },
-    "hooks": {
-      "before:init": [
-        "npm test"
-      ]
-    },
     "github": {
-      "release": true,
-      "releaseName": "v${version}",
-      "web": true
+      "release": true
+    },
+    "npm": {
+      "publish": true,
+      "skipChecks": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": {
+          "name": "angular"
+        }
+      }
     }
   },
   "c8": {
@@ -130,9 +130,6 @@
       "tests/**",
       "src/legacy/**"
     ]
-  },
-  "eslintConfig": {
-    "extends": "@adonisjs/eslint-config/package"
   },
   "prettier": "@adonisjs/prettier-config",
   "tsup": {
