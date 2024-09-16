@@ -222,8 +222,8 @@ export class Argon implements HashDriverContract {
       id: `argon2${this.#config.variant}`,
       version: this.#config.version,
       params: {
-        t: this.#config.iterations,
         m: this.#config.memory,
+        t: this.#config.iterations,
         p: this.#config.parallelism,
       },
     })
