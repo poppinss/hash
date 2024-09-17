@@ -220,6 +220,42 @@ test.group('argon | verify', () => {
     assert.isTrue(await argon.verify(hash, 'password'))
   })
 
+  test('should verify a precomputed hash with old parameters order', async ({ assert }) => {
+    // Precomputed hash for "password"
+    const hash =
+      '$argon2id$v=19$t=4,m=65536,p=1$oNZeAqWynNAkeJUGcuNMSw$O47kb/ayyV1VWoQLDpI/IkDOYUCF/Ctqzxys4cyEeGc'
+
+    const argon = new Argon({
+      variant: 'id',
+      iterations: 4,
+      memory: 65536,
+      parallelism: 1,
+      version: 19,
+      saltSize: 16,
+      hashLength: 32,
+    })
+
+    assert.isTrue(await argon.verify(hash, 'test-124_arg'))
+  })
+
+  test('should verify a precomputed hash with new parameters order', async ({ assert }) => {
+    // Precomputed hash for "password"
+    const hash =
+      '$argon2id$v=19$m=65536,t=4,p=1$oNZeAqWynNAkeJUGcuNMSw$O47kb/ayyV1VWoQLDpI/IkDOYUCF/Ctqzxys4cyEeGc'
+
+    const argon = new Argon({
+      variant: 'id',
+      iterations: 4,
+      memory: 65536,
+      parallelism: 1,
+      version: 19,
+      saltSize: 16,
+      hashLength: 32,
+    })
+
+    assert.isTrue(await argon.verify(hash, 'test-124_arg'))
+  })
+
   test('fail verification when value is formatted as phc string', async ({ assert }) => {
     const argon = new Argon({
       variant: 'id',
