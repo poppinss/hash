@@ -52,27 +52,27 @@
     "@japa/assert": "^3.0.0",
     "@japa/expect-type": "^2.0.2",
     "@japa/runner": "^3.1.4",
-    "@release-it/conventional-changelog": "^8.0.1",
-    "@swc/core": "^1.7.23",
+    "@release-it/conventional-changelog": "^8.0.2",
+    "@swc/core": "^1.7.26",
     "@types/bcrypt": "^5.0.2",
-    "@types/node": "^22.5.2",
+    "@types/node": "^22.5.5",
     "argon2": "^0.41.1",
     "bcrypt": "^5.1.1",
     "c8": "^10.1.2",
     "cross-env": "^7.0.3",
     "del-cli": "^5.1.0",
-    "eslint": "^9.9.1",
+    "eslint": "^9.11.0",
     "github-label-sync": "^2.3.1",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "prettier": "^3.3.3",
     "release-it": "^17.6.0",
     "ts-node-maintained": "^10.9.4",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
   },
   "dependencies": {
     "@phc/format": "^1.0.0",
-    "@poppinss/utils": "^6.7.3"
+    "@poppinss/utils": "^6.8.3"
   },
   "peerDependencies": {
     "argon2": "^0.31.2 || ^0.41.0",
