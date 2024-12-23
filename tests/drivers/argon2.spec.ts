@@ -203,7 +203,7 @@ test.group('argon | verify', () => {
     assert.isTrue(matches)
   })
 
-  test('should verify a precomputed hash', async ({ assert }) => {
+  test('should verify a precomputed hash for variant id', async ({ assert }) => {
     // Precomputed hash for "password"
     const hash =
       '$argon2id$v=19$m=4096,t=3,p=1$PcEZHj1maR/+ZQynyJHWZg$2jEN4xcww7CYp1jakZB1rxbYsZ55XH2HgjYRtdZtubI'
@@ -220,8 +220,42 @@ test.group('argon | verify', () => {
     assert.isTrue(await argon.verify(hash, 'password'))
   })
 
-  test('should verify a precomputed hash with old parameters order', async ({ assert }) => {
+  test('should verify a precomputed hash for variant i', async ({ assert }) => {
     // Precomputed hash for "password"
+    const hash =
+      '$argon2i$v=19$m=4096,t=4,p=2$dHRHRnJrNXhMS3hGdXp2Sg$rjAqTHriWP3GhO5/ZYoxuKcXDks/02JLGld9uBTsUgc'
+
+    const argon = new Argon({
+      variant: 'i',
+      iterations: 4,
+      memory: 4096,
+      parallelism: 2,
+      version: 19,
+      saltSize: 16,
+    })
+
+    assert.isTrue(await argon.verify(hash, 'password'))
+  })
+
+  test('should verify a precomputed hash for variant d', async ({ assert }) => {
+    // Precomputed hash for "password"
+    const hash =
+      '$argon2d$v=19$m=4096,t=4,p=2$dHRHRnJrNXhMS3hGdXp2Sg$F4lQNEt3xXSCNwTOflBJPzSlNk9dN3h1+lizNakqEzs'
+
+    const argon = new Argon({
+      variant: 'd',
+      iterations: 4,
+      memory: 4096,
+      parallelism: 2,
+      version: 19,
+      saltSize: 16,
+    })
+
+    assert.isTrue(await argon.verify(hash, 'password'))
+  })
+
+  test('should verify a precomputed hash with old parameters order', async ({ assert }) => {
+    // Precomputed hash for "test-124_arg"
     const hash =
       '$argon2id$v=19$t=4,m=65536,p=1$oNZeAqWynNAkeJUGcuNMSw$O47kb/ayyV1VWoQLDpI/IkDOYUCF/Ctqzxys4cyEeGc'
 
@@ -239,7 +273,7 @@ test.group('argon | verify', () => {
   })
 
   test('should verify a precomputed hash with new parameters order', async ({ assert }) => {
-    // Precomputed hash for "password"
+    // Precomputed hash for "test-124_arg"
     const hash =
       '$argon2id$v=19$m=65536,t=4,p=1$oNZeAqWynNAkeJUGcuNMSw$O47kb/ayyV1VWoQLDpI/IkDOYUCF/Ctqzxys4cyEeGc'
 

@@ -8,6 +8,7 @@
  */
 
 import type argon2 from 'argon2'
+import { argon2i, argon2d, argon2id } from 'argon2'
 import { safeEqual } from '@poppinss/utils'
 
 import { PhcFormatter } from '../phc_formatter.js'
@@ -55,9 +56,9 @@ export class Argon implements HashDriverContract {
    * Supported variants
    */
   #variants: { [K in ArgonVariants]: 0 | 1 | 2 } = {
-    i: 0,
-    d: 1,
-    id: 2,
+    i: argon2i,
+    d: argon2d,
+    id: argon2id,
   }
 
   /**
